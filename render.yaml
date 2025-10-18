@@ -41,7 +41,7 @@ services:
   # =========================================================
   # 🗄️ Database (postgres-prod)
   # =========================================================
-database:
+databases:
   - type: postgres
     name: postgres-prod
     env: docker
