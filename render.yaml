@@ -15,7 +15,7 @@ services:
         fromService:
           type: web
           name: server-prod
-          property: hostUrl
+          property: host
 
   # =========================================================
   # ⚙️ Backend API (server-prod)
@@ -61,7 +61,7 @@ services:
         fromService:
           type: web
           name: client-prod
-          property: hostUrl
+          property: host
 
   # =========================================================
   # 🗄️ Database (postgres-prod)
