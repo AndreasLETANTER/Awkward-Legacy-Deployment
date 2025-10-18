@@ -41,12 +41,13 @@ services:
   # =========================================================
   # 🗄️ Database (postgres-prod)
   # =========================================================
-  - type: pserv
+database:
+  - type: postgres
     name: postgres-prod
+    env: docker
     plan: free
-    docker:
-      image: postgres:16.10-alpine
-      command: postgres
+    image: postgres:16.10-alpine
+    dockerCommand: postgres
 
     envVars:
       - key: POSTGRES_DB
@@ -60,3 +61,4 @@ services:
       name: postgres_prod_data
       mountPath: /var/lib/postgresql/data
       sizeGB: 1
+  
