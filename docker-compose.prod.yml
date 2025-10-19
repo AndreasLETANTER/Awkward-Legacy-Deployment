@@ -1,8 +1,8 @@
 services:
   client-prod:
     build:
-      context: ./client
-      dockerfile: Dockerfile.prod
+      context: .
+      dockerfile: client/Dockerfile.prod
     environment:
       - NODE_ENV=${NODE_ENV:-production}
       - VITE_API_URL=${VITE_API_URL:-http://server-prod:8000}
@@ -13,8 +13,8 @@ services:
   
   server-prod:
     build:
-      context: ./server
-      dockerfile: Dockerfile.prod
+      context: .
+      dockerfile: server/Dockerfile.prod
     restart: unless-stopped
     ports:
       - "8000:8000"
