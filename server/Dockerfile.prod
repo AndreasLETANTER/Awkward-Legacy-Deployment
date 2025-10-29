@@ -3,7 +3,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY server/requirements.txt .
 
 RUN useradd -r -u 1001 -d /home/app -m -s /bin/bash app
 
@@ -11,7 +11,7 @@ USER app
 
 RUN pip install --no-cache-dir --user -r requirements.txt
 
-COPY src/ ./src/
+COPY server/src/ ./src/
 
 ENV PYTHONPATH=/app/src:/app
 ENV PATH=/home/app/.local/bin:$PATH
