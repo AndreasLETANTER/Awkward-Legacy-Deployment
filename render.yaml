@@ -15,7 +15,7 @@ services:
         fromService:
           type: web
           name: server-prod
-          property: host
+          envVarKey: RENDER_EXTERNAL_URL
 
   # =========================================================
   # ⚙️ Backend API (server-prod)
@@ -61,7 +61,7 @@ services:
         fromService:
           type: web
           name: client-prod
-          property: host
+          envVarKey: RENDER_EXTERNAL_URL
 
   # =========================================================
   # 🗄️ Database (postgres-prod)
