@@ -1,0 +1,71 @@
+services:
+  # =========================================================
+  # 🌐 Frontend (client-prod)
+  # =========================================================
+  - type: web
+    name: client-prod
+    env: docker
+    plan: free
+    dockerfilePath: ./client/Dockerfile.prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: server-prod
+          property: host
+
+  # =========================================================
+  # ⚙️ Backend API (server-prod)
+  # =========================================================
+  - type: web
+    name: server-prod
+    env: docker
+    plan: free
+    dockerfilePath: ./server/Dockerfile.prod
+
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: postgres-prod
+          property: connectionString
+
+      - key: POSTGRES_DB
+        fromDatabase:
+          name: postgres-prod
+          property: database
+
+      - key: POSTGRES_USER
+        fromDatabase:
+          name: postgres-prod
+          property: user
+
+      - key: POSTGRES_PASSWORD
+        fromDatabase:
+          name: postgres-prod
+          property: password
+
+      - key: POSTGRES_HOST
+        fromDatabase:
+          name: postgres-prod
+          property: host
+
+      - key: POSTGRES_PORT
+        fromDatabase:
+          name: postgres-prod
+          property: port
+
+      - key: CORS_ORIGINS
+        fromService:
+          type: web
+          name: client-prod
+          property: host
+
+  # =========================================================
+  # 🗄️ Database (postgres-prod)
+  # =========================================================
+databases:
+  - name: postgres-prod
+    plan: free
