@@ -13,7 +13,7 @@ services:
   
   server-prod:
     build:
-      context: ./server
+      context: .
       dockerfile: Dockerfile.prod
     restart: unless-stopped
     ports:
