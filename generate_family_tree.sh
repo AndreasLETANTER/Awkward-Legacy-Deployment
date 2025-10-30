@@ -3,7 +3,7 @@
 # Generate a realistic 5-generation family tree
 # The Smith Family Tree
 
-API_URL="http://localhost:8000/api/v1"
+API_URL="https://server-prod-0lg2.onrender.com/api/v1"
 
 echo "🌳 Generating 5-Generation Smith Family Tree..."
 echo ""
